@@ -1,0 +1,56 @@
+Sub Zásilkovna_CZSK()
+'
+' Zásilkovna_CZSK Makro
+'
+    
+    
+    
+    
+    
+    If ActiveSheet.UsedRange.Rows.Count = 1 Then
+        Range("K1").Select
+        ActiveCell.FormulaR1C1 = "=RC[-4]"
+        
+        Range("L1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        
+        Range("M1").Select
+        ActiveCell.FormulaR1C1 = "0"
+        
+        Range("N1").Select
+        ActiveCell.FormulaR1C1 = "CZ/SK"
+        
+             
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        
+    Else
+        Range("K1").Select
+         ActiveCell.FormulaR1C1 = "=RC[-4]"
+        Selection.AutoFill Destination:=Range("K1:K" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("L1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        Selection.AutoFill Destination:=Range("L1:L" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("M1").Select
+        ActiveCell.FormulaR1C1 = "0"
+        Selection.AutoFill Destination:=Range("M1:M" & Range("A" & Rows.Count).End(xlUp).Row)
+                   
+        Range("N1").Select
+        ActiveCell.FormulaR1C1 = "CZ/SK"
+        Selection.AutoFill Destination:=Range("N1:N" & Range("M" & Rows.Count).End(xlUp).Row)
+               
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        Selection.AutoFill Destination:=Range("A1:A" & Range("B" & Rows.Count).End(xlUp).Row)
+        Range("A1:A" & Range("A" & Rows.Count).End(xlUp).Row).Select
+    End If
+    
+End Sub
+

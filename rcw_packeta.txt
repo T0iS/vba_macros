@@ -1,0 +1,64 @@
+﻿Sub Zásilkovna()
+'
+' Zásilkovna Makro
+'
+    
+    
+    
+    
+    
+    If ActiveSheet.UsedRange.Rows.Count = 1 Then
+        Range("O1").Select
+        ActiveCell.FormulaR1C1 = "20"
+        
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "0.2"
+        
+        Range("Q1").Select
+        ActiveCell.Formula = "=IF(H1=""GB"",3885,IF(H1=""AT"",80,IF(H1=""SK"",16,IF(H1=""DE"",111,IF(H1=""HU"",805,IF(H1=""PL"",1406,IF(H1=""NL"",4329,IF(H1=""RO"",590,IF(H1=""BG"",4015,IF(H1=""FR"",4309,IF(H1=""DK"",4993,IF(H1=""IT"",2726,IF(H1=""LU"",4834,IF(H1=""EE"",5060,IF(H1=""SI"",4949,IF(H1=""IE"",4524,IF(H1=""HR"",4646,IF(H1=""PT"",4655,IF(H1=""GR"",4738,IF(H1=""LT"",4707,IF(H1=""LV"",5063,IF(H1=""SE"",4827,IF(H1=""FI"",4830,IF(H1=""BE"",4832,IF(H1=""ES"",4638,""NENÍ"")))))))))))))))))))))))))"
+        
+        Range("G1").Select
+        For Each x In Range("G1:G" & Range("A" & Rows.Count).End(xlUp).Row)
+        x.Value = UCase(x.Value)
+        Next
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "SVET"
+        
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        
+    Else
+        Range("O1").Select
+        ActiveCell.FormulaR1C1 = "20"
+        Selection.AutoFill Destination:=Range("O1:O" & Range("N" & Rows.Count).End(xlUp).Row)
+        
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "0.2"
+        Selection.AutoFill Destination:=Range("P1:P" & Range("O" & Rows.Count).End(xlUp).Row)
+        
+        Range("Q1").Select
+        ActiveCell.Formula = "=IF(H1=""GB"",3885,IF(H1=""AT"",80,IF(H1=""SK"",16,IF(H1=""DE"",111,IF(H1=""HU"",805,IF(H1=""PL"",1406,IF(H1=""NL"",4329,IF(H1=""RO"",590,IF(H1=""BG"",4015,IF(H1=""FR"",4309,IF(H1=""DK"",4993,IF(H1=""IT"",2726,IF(H1=""LU"",4834,IF(H1=""EE"",5060,IF(H1=""SI"",4949,IF(H1=""IE"",4524,IF(H1=""HR"",4646,IF(H1=""PT"",4655,IF(H1=""GR"",4738,IF(H1=""LT"",4707,IF(H1=""LV"",5063,IF(H1=""SE"",4827,IF(H1=""FI"",4830,IF(H1=""BE"",4832,IF(H1=""ES"",4638,""NENÍ"")))))))))))))))))))))))))"
+        Selection.AutoFill Destination:=Range("Q1:Q" & Range("P" & Rows.Count).End(xlUp).Row)
+        
+        
+        Range("G1").Select
+        For Each x In Range("G1:G" & Range("A" & Rows.Count).End(xlUp).Row)
+        x.Value = UCase(x.Value)
+        Next
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "SVET"
+        Selection.AutoFill Destination:=Range("R1:R" & Range("Q" & Rows.Count).End(xlUp).Row)
+        
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        Selection.AutoFill Destination:=Range("A1:A" & Range("B" & Rows.Count).End(xlUp).Row)
+        Range("A1:A" & Range("A" & Rows.Count).End(xlUp).Row).Select
+    End If
+    
+End Sub

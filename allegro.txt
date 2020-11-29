@@ -1,0 +1,70 @@
+
+Sub Allegro()
+'
+' Zásilkovna Makro
+'
+    
+    
+    
+    
+    
+    If ActiveSheet.UsedRange.Rows.Count = 2 Then
+               
+        Range("AV2").Select
+        ActiveCell.FormulaR1C1 = "0.2"
+        
+        Range("AW2").Select
+        ActiveCell.Formula = "=IF(AL2=""Kurier DPD"",1406,IF(AL2=""Kurier DPD pobranie"",1406,IF(AL2=""Kurier UPS"",1406,272)))"
+    
+        Range("AX2").Select
+        ActiveCell.FormulaR1C1 = "SVET"
+        
+        If Range("AL2").Value = "Kurier DPD pobranie" Then
+            Range("AG2").Copy Range("AZ2")
+        End If
+        
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        
+    Else
+              
+        Range("AV2").Select
+        ActiveCell.FormulaR1C1 = "0.2"
+        Selection.AutoFill Destination:=Range("AV2:AV" & Range("AT" & Rows.Count).End(xlUp).Row)
+        
+        Range("AW2").Select
+        ActiveCell.Formula = "=IF(AL2=""Kurier DPD"",1406,IF(AL2=""Kurier DPD pobranie"",1406,IF(AL2=""Kurier UPS"",1406,272)))"
+        Selection.AutoFill Destination:=Range("AW2:AW" & Range("AT" & Rows.Count).End(xlUp).Row)
+        
+        
+        Range("AX2").Select
+        ActiveCell.FormulaR1C1 = "SVET"
+        Selection.AutoFill Destination:=Range("AX2:AX" & Range("AT" & Rows.Count).End(xlUp).Row)
+        
+        
+       
+        
+        Dim r As Long
+        For r = Cells(Rows.Count, "AL").End(xlUp).Row To 2 Step -1
+            If Range("AL" & r).Value = "Kurier DPD pobranie" Then
+                Range("AZ" & r).Value = Range("AG" & r).Value
+            End If
+        Next r
+
+
+        
+        Columns("A:A").Select
+        Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+        Range("A1").Select
+        ActiveCell.FormulaR1C1 = " "
+        Selection.AutoFill Destination:=Range("A1:A" & Range("B" & Rows.Count).End(xlUp).Row)
+        Range("A1:A" & Range("A" & Rows.Count).End(xlUp).Row).Select
+    End If
+    
+End Sub
+
+
+
+

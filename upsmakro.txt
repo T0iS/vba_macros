@@ -1,0 +1,73 @@
+Sub UPS_macro()
+'
+' UPS Makro
+'
+    
+    
+    
+    
+    
+    If ActiveSheet.UsedRange.Rows.Count = 1 Then
+               
+        Range("O1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "0.15"
+        
+        Range("Q1").Select
+        ActiveCell.FormulaR1C1 = "IR remote control"
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "SV"
+        
+        Range("S1").Select
+        ActiveCell.FormulaR1C1 = "SHP"
+        
+        Range("T1").Select
+        ActiveCell.FormulaR1C1 = "REC"
+        
+        Range("U1").Select
+        ActiveCell.FormulaR1C1 = "CP"
+        
+        Range("V1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        
+    Else
+              
+        Range("O1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        Selection.AutoFill Destination:=Range("O1:O" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "0.15"
+        Selection.AutoFill Destination:=Range("P1:P" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("Q1").Select
+        ActiveCell.FormulaR1C1 = "IR remote control"
+        Selection.AutoFill Destination:=Range("Q1:Q" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "SV"
+        Selection.AutoFill Destination:=Range("R1:R" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("S1").Select
+        ActiveCell.FormulaR1C1 = "SHP"
+        Selection.AutoFill Destination:=Range("S1:S" & Range("A" & Rows.Count).End(xlUp).Row)
+
+	Range("T1").Select
+        ActiveCell.FormulaR1C1 = "REC"
+        Selection.AutoFill Destination:=Range("T1:T" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("U1").Select
+        ActiveCell.FormulaR1C1 = "CP"
+        Selection.AutoFill Destination:=Range("U1:U" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("V1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        Selection.AutoFill Destination:=Range("V1:V" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        
+    End If
+    
+End Sub

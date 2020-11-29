@@ -1,0 +1,83 @@
+Sub POSTA_MAKRO()
+'
+' Makro5 Makro
+'
+
+'
+
+    If ActiveSheet.UsedRange.Rows.Count = 1 Then
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "500"
+        
+        Range("Q1").Select
+        ActiveCell.FormulaR1C1 = "remote control | dalkovy ovladac"
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "CN"
+        
+        Range("S1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        
+        Range("T1").Select
+        ActiveCell.FormulaR1C1 = "0.12"
+        
+        Range("U1").Select
+        ActiveCell.FormulaR1C1 = "CZK"
+        
+        Range("V1").Select
+        ActiveCell.FormulaR1C1 = "11"
+        
+    Else
+    
+        Range("P1").Select
+        ActiveCell.FormulaR1C1 = "500"
+        Selection.AutoFill Destination:=Range("P1:P" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("Q1").Select
+        ActiveCell.FormulaR1C1 = "remote control | dalkovy ovladac"
+        Selection.AutoFill Destination:=Range("Q1:Q" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("R1").Select
+        ActiveCell.FormulaR1C1 = "CN"
+        Selection.AutoFill Destination:=Range("R1:R" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("S1").Select
+        ActiveCell.FormulaR1C1 = "1"
+        Selection.AutoFill Destination:=Range("S1:S" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("T1").Select
+        ActiveCell.FormulaR1C1 = "0.12"
+        Selection.AutoFill Destination:=Range("T1:T" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("U1").Select
+        ActiveCell.FormulaR1C1 = "CZK"
+        Selection.AutoFill Destination:=Range("U1:U" & Range("A" & Rows.Count).End(xlUp).Row)
+        
+        Range("V1").Select
+        ActiveCell.FormulaR1C1 = "11"
+        Selection.AutoFill Destination:=Range("V1:V" & Range("A" & Rows.Count).End(xlUp).Row)
+    End If
+    
+
+    Dim Rng As String
+    Dim rng_cell As String
+    
+    x = 1
+    rws = Range("A" & Rows.Count).End(xlUp).Row
+    Let rng_cell = "W" & (x + 1)
+    Let Rng = x & ":" & x
+
+    For i = 1 To rws
+    rng_cell = "W" & (x + 1)
+    Rng = x & ":" & x
+    Range(Rng).Select
+    Selection.Copy
+    Selection.Insert Shift:=xlDown
+    Range(rng_cell).Select
+    Application.CutCopyMode = False
+    ActiveCell.FormulaR1C1 = "A"
+    x = x + 2
+    Next i
+    
+   
+End Sub
